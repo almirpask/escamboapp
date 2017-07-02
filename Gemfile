@@ -10,8 +10,14 @@ end
 gem 'rails', '~> 5.1.1'
 #Bootstrapv4
 gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
+# Notify js gem para notificações
+gem 'rails-assets-notifyjs', source: 'https://rails-assets.org'
 #bootstrap admin template
 gem 'bootstrap_sb_admin_base_v2'
+#Faker 
+gem 'faker'
+#bootbox
+gem 'rails-assets-bootbox', source: 'https://rails-assets.org'
 # Devise
 gem 'devise'
 # Translate for Devise gem
