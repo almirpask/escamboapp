@@ -14,6 +14,10 @@ gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 gem 'rails-assets-notifyjs', source: 'https://rails-assets.org'
 #bootstrap admin template
 gem 'bootstrap_sb_admin_base_v2'
+#Enum Help
+gem 'enum_help'
+#Pumdt
+gem 'pundit'
 #Faker 
 gem 'faker'
 #bootbox

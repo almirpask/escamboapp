@@ -30,6 +30,11 @@
 					<%= f.text_field :email , class:"form-control", placeholder:"Ex: fulano@donimio.com" %>
 			</div>
 			<div class="form-group">
+					<label>Role</label>
+					<%= f.radio_button :role, "value" %>
+			</div>
+
+			<div class="form-group">
 					<label>Senha</label>
 					<%= f.password_field :password , class:"form-control", placeholder:"Sua senha" %>
 			</div>

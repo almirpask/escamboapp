@@ -15,4 +15,4 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
-
+//= require notifyjs
