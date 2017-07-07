@@ -1,0 +1,9 @@
+//alert('<%= @admin.email%>')
+$(function(){
+  $('#email_to').val('<%= @admin.email%>');
+  $('#nome_email').text('<%= @admin.name%>')
+  $('#sendMailModal').modal();
+  $('#sendMailModal').on('shown.bs.modal'), function(){
+    $('#mail_message').focus();
+  };
+})

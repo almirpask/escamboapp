@@ -1,6 +1,7 @@
 class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
-  
+  after_action :verify_authorized, only: [:new, :destroy]
+
   def index
     #@admins = Admin.all
     #@admins = Admin.with_full_access
@@ -23,9 +24,10 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def edit
-  end 
+  end
 
   def update
+
     passwd = params[:admin][:password]
     passwd_confirmation =  params[:admin][:password_confirmation]
 
@@ -34,6 +36,7 @@ class Backoffice::AdminsController < BackofficeController
       params[:admin].delete(:password_confirmation)
     end
     if @admin.update(params_admin)
+      AdminMailer.update_email(current_admin, @admin).deliver_now
       redirect_to backoffice_admins_path, notice: "Administrador (#{@admin.email}) atualizada"
     else
       render :edit
@@ -41,21 +44,23 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def destroy
+    authorize @admin
+    admin_name = @admin.name
     if @admin.destroy
       redirect_to backoffice_admins_path, notice: "Administrador (#{@admin.email}) deletado"
     else
       render :index
     end
   end
-  private 
+  private
 
     def set_admin
       @admin = Admin.find(params[:id])
     end
     def params_admin
 
-      
 
-      params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+
+      params.require(:admin).permit(policy(@admin).permitted_attributes)
     end
 end
