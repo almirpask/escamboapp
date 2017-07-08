@@ -1,0 +1,5 @@
+//alert('<%= @admin.email%>')
+$(function(){
+  $('#sendMailModal').modal('hide');
+  $.notify('<%= @notify_message %>', "<%= @notigy_flag%>");
+})
